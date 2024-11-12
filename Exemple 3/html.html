@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier de Shopping</title>
+    <link rel="stylesheet" href="style.css">  <!-- Lien vers le fichier CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Panier de Shopping</h1>
+
+        <!-- Section des produits -->
+        <div class="products">
+            <div class="product">
+                <h3>T-shirt Rouge</h3>
+                <p>Prix: 15€</p>
+                <button onclick="addToCart('T-shirt Rouge', 15)">Ajouter au panier</button>
+            </div>
+
+            <div class="product">
+                <h3>Jeans Bleu</h3>
+                <p>Prix: 30€</p>
+                <button onclick="addToCart('Jeans Bleu', 30)">Ajouter au panier</button>
+            </div>
+
+            <div class="product">
+                <h3>Chaussettes</h3>
+                <p>Prix: 5€</p>
+                <button onclick="addToCart('Chaussettes', 5)">Ajouter au panier</button>
+            </div>
+
+            <div class="product">
+                <h3>Pantalon Beige</h3>
+                <p>Prix: 20€</p>
+                <button onclick="addToCart('Pantalon Beige', 20)">Ajouter au panier</button>
+            </div>
+        </div>
+
+        <!-- Section du panier -->
+        <h2>Votre Panier</h2>
+        <div id="cart-list"></div> <!-- Liste des articles dans le panier -->
+        <button onclick="clearCart()">Vider le panier</button>
+    </div>
+
+    <script src="script.js"></script>  <!-- Lien vers le fichier JavaScript -->
+</body>
+</html>

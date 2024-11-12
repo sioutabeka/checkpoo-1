@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier avec Confirmation</title>
+    <style>
+        .confirmation {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenue dans notre boutique !</h1>
+
+    <!-- Bouton pour ajouter un produit au panier -->
+    <button onclick="addToCart('T-shirt Rouge', 15)">Ajouter T-shirt Rouge</button>
+    <button onclick="addToCart('Jeans Bleu', 25)">Ajouter Jeans Bleu</button>
+
+    <!-- Div pour afficher la confirmation -->
+    <div id="confirmation" class="confirmation"></div>
+
+    <div class="panier">
+        <h2>Panier</h2>
+        <ul id="listePanier"></ul>
+        <p id="total">Total : 0€</p>
+    </div>
+
+    <script>
+        let panier = [];
+
+        // Fonction pour ajouter un produit au panier
+        function addToCart(nom, prix) {
+            // Crée un objet produit
+            const produit = { nom: nom, prix: prix };
+
+            // Ajoute le produit au tableau panier
+            panier.push(produit);
+
+            // Affiche un message de confirmation
+            document.getElementById('confirmation').textContent = nom + ' a été ajouté au panier !';
+
+            // Met à jour l'affichage du panier
+            updatePanier();
+        }
+
+        // Fonction pour mettre à jour l'affichage du panier
+        function updatePanier() {
+            const listePanier = document.getElementById('listePanier');
+            const total = document.getElementById('total');
+            
+            listePanier.innerHTML = '';
+
+            let totalPrix = 0;
+
+            panier.forEach(function(produit) {
+                let li = document.createElement('li');
+                li.textContent = produit.nom + ' - ' + produit.prix + '€';
+                listePanier.appendChild(li);
+
+                totalPrix += produit.prix;
+            });
+
+            total.textContent = 'Total : ' + totalPrix + '€';
+        }
+    </script>
+</body>
+</html>

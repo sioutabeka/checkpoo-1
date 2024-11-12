@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier</title>
+    <style>
+        .panier {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .produit {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenue dans notre boutique !</h1>
+    
+    <!-- Bouton pour ajouter un produit au panier -->
+    <button onclick="addToCart('T-shirt Rouge', 15)">Ajouter T-shirt Rouge</button>
+    <button onclick="addToCart('Jeans Bleu', 25)">Ajouter Jeans Bleu</button>
+    
+    <div class="panier">
+        <h2>Panier</h2>
+        <ul id="listePanier"></ul>
+        <p id="total">Total : 0€</p>
+    </div>
+    
+    <script>
+        // Tableau pour stocker les produits dans le panier
+        let panier = [];
+
+        // Fonction pour ajouter un produit au panier
+        function addToCart(nom, prix) {
+            // Crée un objet produit
+            const produit = { nom: nom, prix: prix };
+
+            // Ajoute le produit au tableau panier
+            panier.push(produit);
+
+            // Met à jour l'affichage du panier
+            updatePanier();
+        }
+
+        // Fonction pour mettre à jour l'affichage du panier
+        function updatePanier() {
+            // Récupère la liste et le total
+            const listePanier = document.getElementById('listePanier');
+            const total = document.getElementById('total');
+            
+            // Vide la liste avant de la remplir avec les produits
+            listePanier.innerHTML = '';
+
+            let totalPrix = 0;
+
+            // Pour chaque produit dans le panier, on ajoute une ligne à la liste
+            panier.forEach(function(produit) {
+                let li = document.createElement('li');
+                li.textContent = produit.nom + ' - ' + produit.prix + '€';
+                listePanier.appendChild(li);
+
+                // Calcule le total
+                totalPrix += produit.prix;
+            });
+
+            // Met à jour le total
+            total.textContent = 'Total : ' + totalPrix + '€';
+        }
+    </script>
+</body>
+</html>
